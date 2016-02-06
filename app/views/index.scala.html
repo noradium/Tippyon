@@ -1,0 +1,10 @@
+@(text: String)
+
+@main("index") {
+    <div id="demo">
+        <p>{{message}}</p>
+        <input v-model="message">
+    </div>
+}{
+    <script src="@routes.Assets.versioned("scripts/index.js")" type="text/javascript"></script>
+}

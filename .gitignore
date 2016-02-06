@@ -1,0 +1,17 @@
+logs
+target
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
+
+node_modules
+
+# SBT
+dist
+project/boot
+project/target
+project/plugins/target
+.target

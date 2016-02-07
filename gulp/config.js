@@ -7,9 +7,17 @@ module.exports = {
 
   // jsのビルド設定
   js: {
-    src: src + '/scripts/**',
+    //src: src + '/scripts/**',
     dest: dest + '/scripts',
     uglify: false
+  },
+
+  sass: {
+    //src: src + '/styles/**',
+    dest: dest + '/styles',
+    uglify: false,
+    base: src + '/styles',
+    entry: src + '/styles/*/*.scss',
   },
 
   // webpackの設定

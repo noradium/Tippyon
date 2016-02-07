@@ -3,10 +3,11 @@
  */
 
 var Vue = require('vue');
+require('./components/DropzoneFileUploader.js');
 
-var demo = new Vue({
-    el: '#demo',
+
+var vue = new Vue({
+    el: '#content',
     data: {
-        message: 'Hello Vue.js!'
     }
 });

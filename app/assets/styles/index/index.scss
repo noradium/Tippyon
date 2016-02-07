@@ -1,0 +1,13 @@
+
+header {
+  height:100px;
+  width: 100%;
+
+  .logo {
+    font-size: 48px;
+    color: #0068B7;
+
+  }
+}
+
+@import "components/dropzone-file-uploader";

@@ -56,11 +56,12 @@
 	 */
 
 	var Vue = __webpack_require__(2);
+	__webpack_require__(4);
 
-	var demo = new Vue({
-	    el: '#demo',
+
+	var vue = new Vue({
+	    el: '#content',
 	    data: {
-	        message: 'Hello Vue.js!'
 	    }
 	});
 
@@ -9758,6 +9759,51 @@
 	    throw new Error('process.chdir is not supported');
 	};
 	process.umask = function() { return 0; };
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by yusuke_hosono on 2016/02/07.
+	 */
+	var Vue = __webpack_require__(2);
+
+	Vue.component('dropzone-image-uploader', {
+
+	    template: '#dropzone',
+
+	    props: ['help'],
+
+	    data: function() {
+	        return {
+	            image: '',
+	            hovering:false
+	        };
+	    },
+
+	    methods: {
+	        onFileChange: function(e) {
+	            var files = e.target.files || e.dataTransfer.files;
+	            if (!files.length) return;
+	            this.createImage(files[0]);
+	        },
+	        createImage: function(file) {
+	            var image = new Image();
+	            var reader = new FileReader();
+	            var vm = this;
+
+	            reader.onload = function(e) {
+	                vm.image = e.target.result;
+	            };
+	            reader.readAsDataURL(file);
+	        },
+	        removeImage: function (e) {
+	            this.image = '';
+	        }
+	    }
+	});
 
 
 /***/ }

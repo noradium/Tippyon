@@ -1,10 +1,52 @@
 @(text: String)
 
 @main("index") {
-    <div id="demo">
-        <p>{{message}}</p>
-        <input v-model="message">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("styles/index.css")">
+}{
+    <header>
+        <div class="logo">Tippyon</div>
+    </header>
+
+    <div id="content">
+        <div class="description">
+            顔が含まれる画像を投稿すると、頭の上にティッピーをのせます。
+        </div>
+
+        <div class="uploader">
+            <h2>画像をドラッグ＆ドロップ</h2>
+
+            <dropzone-image-uploader help="Specific requirements for this dropzone"></dropzone-image-uploader>
+
+        </div>
+
+        <div class="recent-images">
+            <h2>最近投稿された画像一覧</h2>
+
+            <div class="list">
+                <ul>
+                </ul>
+            </div>
+        </div>
+
     </div>
+
+
+
+    <template id="dropzone">
+        <div v-if="!image">
+            <div class="dropzone-area" drag-over="handleDragOver" @@dragenter="hovering = true" @@dragleave="hovering = false" :class="{'hovered': hovering}">
+                <div class="dropzone-text">
+                    <span class="dropzone-title">Drop image here or click to select</span>
+                    <span class="dropzone-info" v-if="help">{{ help }}</span>
+                </div>
+                <input type="file" @@change="onFileChange" />
+            </div>
+        </div>
+        <div class="dropzone-preview">
+            <img :src="image" />
+            <button @@click="removeImage" v-if="image">Remove</button>
+        </div>
+    </template>
 }{
     <script src="@routes.Assets.versioned("scripts/index.js")" type="text/javascript"></script>
 }
